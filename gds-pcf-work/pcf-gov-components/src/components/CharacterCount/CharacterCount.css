@@ -1,0 +1,43 @@
+/* CharacterCount component styles - Based on GOV.UK Frontend v6.1.0 */
+
+.govuk-character-count {
+  /* govuk-responsive-margin(6, "bottom") — mobile: 20px */
+  margin-bottom: 20px;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-character-count {
+    margin-bottom: 30px;
+  }
+}
+
+/* Tighten spacing between form-group/textarea and the count message */
+.govuk-character-count .govuk-form-group,
+.govuk-character-count .govuk-textarea {
+  margin-bottom: 5px; /* govuk-spacing(1) */
+}
+
+/* When textarea enters error state while focused, show error ring */
+.govuk-character-count .govuk-textarea--error:focus {
+  border-color: #ca3535; /* govuk-functional-colour(error) */
+  box-shadow: inset 0 0 0 2px #ca3535; /* $govuk-border-width-form-element */
+}
+
+/* ── Count message ── */
+
+.govuk-character-count__message {
+  /* govuk-font-tabular-numbers */
+  font-variant-numeric: tabular-nums;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+/* Zero-width space reserves vertical space when message is empty */
+.govuk-character-count__message::after {
+  content: "\200B";
+}
+
+/* Hidden until threshold is reached */
+.govuk-character-count__message--disabled {
+  visibility: hidden;
+}

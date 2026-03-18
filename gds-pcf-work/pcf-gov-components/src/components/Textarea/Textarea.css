@@ -1,0 +1,54 @@
+/* Textarea component styles - Based on GOV.UK Frontend */
+
+.govuk-textarea {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.25;
+  
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 40px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  padding: 5px;
+  
+  border: 2px solid #0b0c0c;
+  border-radius: 0;
+  
+  color: #0b0c0c;
+  background-color: #ffffff;
+  
+  appearance: none;
+  resize: vertical;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-textarea {
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+    margin-bottom: 30px;
+  }
+}
+
+.govuk-textarea:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 2px;
+}
+
+.govuk-textarea:disabled {
+  opacity: 0.5;
+  color: inherit;
+  background-color: transparent;
+  cursor: not-allowed;
+}
+
+/* Error state */
+.govuk-textarea--error {
+  border: 4px solid #ca3535;
+}
+
+.govuk-textarea--error:focus {
+  border-color: #0b0c0c;
+}

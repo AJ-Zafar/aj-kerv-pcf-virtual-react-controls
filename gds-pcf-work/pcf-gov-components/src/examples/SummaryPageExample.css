@@ -1,0 +1,26 @@
+.example-summary-page {
+  padding: 20px 0;
+  max-width: 860px;
+}
+
+.example-summary-page__breadcrumbs {
+  margin-bottom: 14px;
+}
+
+.example-summary-page__meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.example-summary-page__meta-label {
+  font-weight: 700;
+  color: #0b0c0c;
+}
+
+.example-summary-page__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}

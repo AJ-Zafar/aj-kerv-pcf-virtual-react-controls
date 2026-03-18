@@ -1,0 +1,47 @@
+/* PhaseBanner — GOV.UK Frontend v6.1.0 */
+
+.govuk-phase-banner {
+  padding-top: 10px;   /* govuk-spacing(2) = 10px */
+  padding-bottom: 10px;
+  border-bottom: 1px solid #cecece; /* govuk-functional-colour(border) = black tint-80 */
+}
+
+.govuk-phase-banner__content {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* govuk-font(16) */
+  font-size: 0.875rem;
+  line-height: 1.14286;
+  font-weight: 400;
+  display: table;
+  margin: 0;
+  color: #0b0c0c; /* govuk-functional-colour(text) */
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-phase-banner__content {
+    font-size: 1rem;
+    line-height: 1.25;
+  }
+}
+
+.govuk-phase-banner__content__tag {
+  /* govuk-font-size(16) */
+  font-size: 0.875rem;
+  line-height: 1.14286;
+  margin-right: 15px; /* govuk-spacing(3) = 15px */
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-phase-banner__content__tag {
+    font-size: 1rem;
+    line-height: 1.25;
+    margin-right: 10px; /* govuk-spacing(2) at tablet */
+  }
+}
+
+.govuk-phase-banner__text {
+  display: table-cell;
+  vertical-align: middle;
+}

@@ -1,0 +1,144 @@
+/* CheckboxGroup component styles - Based on GOV.UK Frontend */
+
+.govuk-fieldset__legend {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  font-size: 1.1875rem;
+  font-weight: 400;
+  line-height: 1.31579;
+  color: #0b0c0c;
+  margin-bottom: 15px;
+  display: block;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-fieldset__legend {
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-fieldset__legend,
+  .govuk-checkboxes__label,
+  .govuk-checkboxes__hint {
+    font-family: sans-serif;
+  }
+}
+
+.govuk-fieldset__legend--xl,
+.govuk-fieldset__legend--l,
+.govuk-fieldset__legend--m {
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.govuk-fieldset__legend--xl {
+  font-size: 3rem;
+  line-height: 1.04167;
+}
+
+.govuk-fieldset__legend--l {
+  font-size: 2.25rem;
+  line-height: 1.11111;
+}
+
+.govuk-fieldset__legend--m {
+  font-size: 1.5rem;
+  line-height: 1.25;
+}
+
+.govuk-fieldset__legend--s {
+  font-weight: 700;
+}
+
+.govuk-checkboxes {
+  margin-bottom: 0;
+}
+
+.govuk-checkboxes__item {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.govuk-checkboxes__item:last-child,
+.govuk-checkboxes__item:last-of-type {
+  margin-bottom: 0;
+}
+
+.govuk-checkboxes__input {
+  z-index: 1;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.govuk-checkboxes__label {
+  align-self: center;
+  max-width: calc(100% - 74px);
+  margin-bottom: 0;
+  padding: 7px 15px;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+/* Custom checkbox appearance */
+.govuk-checkboxes__label::before {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 40px;
+  height: 40px;
+  border: 2px solid currentColor;
+  background: transparent;
+}
+
+.govuk-checkboxes__label::after {
+  content: "";
+  box-sizing: border-box;
+  position: absolute;
+  top: 13px;
+  left: 10px;
+  width: 23px;
+  height: 12px;
+  transform: rotate(-45deg);
+  border: solid;
+  border-width: 0 0 5px 5px;
+  border-top-color: transparent;
+  opacity: 0;
+  background: transparent;
+}
+
+.govuk-checkboxes__input:checked + .govuk-checkboxes__label::after {
+  opacity: 1;
+}
+
+.govuk-checkboxes__input:focus + .govuk-checkboxes__label::before {
+  border-width: 4px;
+  outline: 3px solid transparent;
+  outline-offset: 1px;
+  box-shadow: 0 0 0 3px #fd0;
+}
+
+.govuk-checkboxes__input:disabled,
+.govuk-checkboxes__input:disabled + .govuk-checkboxes__label {
+  cursor: not-allowed;
+}
+
+.govuk-checkboxes__input:disabled + .govuk-checkboxes__label,
+.govuk-checkboxes__input:disabled ~ .govuk-checkboxes__hint {
+  opacity: 0.5;
+}
+
+.govuk-checkboxes__hint {
+  display: block;
+  width: 100%;
+  margin-top: -5px;
+  padding-right: 15px;
+  padding-left: 59px;
+}

@@ -1,0 +1,41 @@
+.example-task-page {
+  padding: 20px 0;
+  max-width: 860px;
+}
+
+.example-task-page__heading {
+  font-size: 36px;
+  font-weight: 700;
+  color: #0b0c0c;
+  margin: 20px 0 10px;
+}
+
+.example-task-page__body {
+  font-size: 19px;
+  color: #0b0c0c;
+  margin-bottom: 20px;
+}
+
+.example-task-page__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.example-task-page__confirmation-body {
+  margin-top: 30px;
+}
+
+.example-task-page__confirmation-body h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0b0c0c;
+  margin: 30px 0 10px;
+}
+
+.example-task-page__confirmation-body p {
+  font-size: 19px;
+  color: #0b0c0c;
+  margin-bottom: 15px;
+}

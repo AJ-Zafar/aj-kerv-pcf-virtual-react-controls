@@ -1,0 +1,91 @@
+.example-list-page {
+  padding: 20px 0;
+}
+
+.example-list-page__layout {
+  display: grid;
+  grid-template-columns: 300px minmax(0, 1fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.example-list-page__filters {
+  min-width: 0;
+}
+
+.example-list-page__results {
+  min-width: 0;
+  max-width: 900px;
+}
+
+.example-list-page__panel {
+  border: 1px solid #d8d8d8;
+  background: #ffffff;
+  padding: 16px;
+}
+
+.example-list-page__results-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.example-list-page__results-title {
+  margin: 0;
+  font-size: 1.1875rem;
+}
+
+.example-list-page__results-meta {
+  margin: 0;
+  color: #505a5f;
+  font-size: 0.95rem;
+}
+
+.example-list-page__pagination {
+  margin-top: 16px;
+}
+
+.example-list-page__actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.example-list-page__view-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: #1d70b8;
+  text-decoration: underline;
+  cursor: pointer;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.example-list-page__view-link:hover {
+  color: #003078;
+  text-decoration-thickness: 3px;
+}
+
+.example-list-page__view-link:focus {
+  outline: 3px solid #fd0;
+  outline-offset: 0;
+  background-color: #fd0;
+  color: #0b0c0c;
+  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+  text-decoration: none;
+}
+
+@media (max-width: 40.0625em) {
+  .example-list-page__layout {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .example-list-page__results-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

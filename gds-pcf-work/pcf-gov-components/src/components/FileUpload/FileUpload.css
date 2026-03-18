@@ -1,0 +1,58 @@
+/* FileUpload — GOV.UK Frontend v6.1.0 */
+
+.govuk-file-upload {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* govuk-font(19) */
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 400;
+  max-width: 100%;
+  margin-left: -5px;  /* -$component-padding = -govuk-spacing(1) */
+  padding: 5px;       /* $component-padding = govuk-spacing(1) */
+  color: #0b0c0c;     /* govuk-functional-colour(text) */
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-file-upload {
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+/* Safari: drop native appearance to respect custom font-size */
+.govuk-file-upload::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  color: inherit;
+  font: inherit;
+}
+
+/* Focus state */
+.govuk-file-upload:focus {
+  outline: 3px solid #ffdd00;       /* govuk-functional-colour(focus) */
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 4px #0b0c0c; /* govuk-functional-colour(input-border) */
+}
+
+/* Firefox focus-within fix (https://bugzil.la/1430196) */
+.govuk-file-upload:focus-within {
+  outline: 3px solid #ffdd00;
+  outline-offset: 0;
+  box-shadow: inset 0 0 0 4px #0b0c0c;
+}
+
+/* Disabled state */
+.govuk-file-upload:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Error state — matches govuk-input--error pattern */
+.govuk-file-upload--error {
+  border: 4px solid #ca3535; /* $govuk-border-width-form-element-error solid govuk-colour(red) */
+}
+
+.govuk-file-upload--error:focus {
+  border-color: #0b0c0c;
+}

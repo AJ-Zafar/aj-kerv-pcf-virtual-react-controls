@@ -1,0 +1,137 @@
+/* DateInput component styles - Based on GOV.UK Frontend v6.1.0 */
+/* Includes fieldset + date-input canonical styles */
+
+/* ── Fieldset reset ── */
+
+.govuk-fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.govuk-fieldset::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+/* ── Fieldset legend ── */
+
+.govuk-fieldset__legend {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* govuk-font($size: 19) — mobile */
+  font-size: 1rem;
+  line-height: 1.25;
+  font-weight: 400;
+
+  box-sizing: border-box;
+  display: table;
+  max-width: 100%;
+  margin-bottom: 10px; /* govuk-spacing(2) */
+  padding: 0;
+  color: #0b0c0c; /* govuk-functional-colour(text) */
+  white-space: normal;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-fieldset__legend {
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+@media print {
+  .govuk-fieldset__legend {
+    font-family: sans-serif;
+    font-size: 14pt;
+    line-height: 1.15;
+  }
+}
+
+/* ── Legend size modifiers ── */
+
+.govuk-fieldset__legend--xl,
+.govuk-fieldset__legend--l,
+.govuk-fieldset__legend--m {
+  font-weight: 700;
+  margin-bottom: 15px; /* govuk-spacing(3) */
+}
+
+/* XL: govuk-font-size(48) */
+.govuk-fieldset__legend--xl {
+  font-size: 2rem; /* 32px mobile */
+  line-height: 1.09375;
+}
+@media (min-width: 40.0625em) {
+  .govuk-fieldset__legend--xl {
+    font-size: 3rem; /* 48px */
+    line-height: 1.04167;
+  }
+}
+
+/* L: govuk-font-size(36) */
+.govuk-fieldset__legend--l {
+  font-size: 1.5rem; /* 24px mobile */
+  line-height: 1.04167;
+}
+@media (min-width: 40.0625em) {
+  .govuk-fieldset__legend--l {
+    font-size: 2.25rem; /* 36px */
+    line-height: 1.11111;
+  }
+}
+
+/* M: govuk-font-size(24) */
+.govuk-fieldset__legend--m {
+  font-size: 1.125rem; /* 18px mobile */
+  line-height: 1.11111;
+}
+@media (min-width: 40.0625em) {
+  .govuk-fieldset__legend--m {
+    font-size: 1.5rem; /* 24px */
+    line-height: 1.25;
+  }
+}
+
+/* S: bold at default size */
+.govuk-fieldset__legend--s {
+  font-weight: 700;
+}
+
+/* Heading inside legend inherits all styles */
+.govuk-fieldset__heading {
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* ── Date input layout ── */
+
+.govuk-date-input {
+  font-size: 0; /* removes whitespace from inline-block children */
+}
+
+.govuk-date-input::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.govuk-date-input__item {
+  display: inline-block;
+  margin-right: 20px; /* govuk-spacing(4) */
+  margin-bottom: 0;
+  vertical-align: bottom;
+}
+
+.govuk-date-input__label {
+  display: block;
+}
+
+.govuk-date-input__input {
+  margin-bottom: 0;
+}

@@ -1,0 +1,50 @@
+/* SectionBreak — GOV.UK Frontend v6.1.0 */
+
+.govuk-section-break {
+  margin: 0;
+  border: 0;
+}
+
+/* --xl: govuk-responsive-margin(8) = mobile 30px / tablet 50px */
+.govuk-section-break--xl {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-section-break--xl {
+    margin-top: 50px;
+    margin-bottom: 50px;
+  }
+}
+
+/* --l: govuk-responsive-margin(6) = mobile 20px / tablet 30px */
+.govuk-section-break--l {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-section-break--l {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+
+/* --m: govuk-responsive-margin(4) = mobile 15px / tablet 20px */
+.govuk-section-break--m {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-section-break--m {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+/* Visible variant — 1px border in govuk-functional-colour(border) = #cecece */
+.govuk-section-break--visible {
+  border-bottom: 1px solid #cecece;
+}

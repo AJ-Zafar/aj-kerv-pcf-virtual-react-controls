@@ -1,0 +1,182 @@
+/* FilterPane component styles - Based on GOV.UK Frontend v6.1.0 spacing/typography scales */
+
+.govuk-filter-pane {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #0b0c0c;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane {
+    font-size: 1.1875rem;
+    line-height: 1.31579;
+  }
+}
+
+.govuk-filter-pane__title {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin: 0 0 20px 0; /* govuk-spacing(4) = 20px */
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane__title {
+    font-size: 1.5rem;
+  }
+}
+
+.govuk-filter-pane__section {
+  border-top: 1px solid #cecece; /* govuk-functional-colour(border) = black tint-80 */
+  padding: 15px 0; /* govuk-spacing(3) = 15px */
+}
+
+.govuk-filter-pane__section:first-of-type {
+  border-top: none;
+  padding-top: 0;
+}
+
+.govuk-filter-pane__section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px; /* govuk-spacing(2) = 10px */
+}
+
+.govuk-filter-pane__section-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane__section-title {
+    font-size: 1.1875rem;
+  }
+}
+
+.govuk-filter-pane__toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  color: #1a65a6; /* govuk-functional-colour(link) = blue shade-10 */
+  text-decoration: underline;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane__toggle {
+    font-size: 1.1875rem;
+  }
+}
+
+.govuk-filter-pane__toggle:hover {
+  color: #0f385c; /* govuk-functional-colour(link-hover) = blue shade-50 */
+  text-decoration-thickness: max(3px, 0.1875rem, 0.12em);
+  -webkit-text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
+  -webkit-text-decoration-skip: none;
+  text-decoration-skip: none;
+}
+
+.govuk-filter-pane__toggle:focus {
+  outline: 3px solid transparent;
+  color: #0b0c0c;
+  background-color: #fd0;
+  box-shadow: 0 -2px #fd0, 0 4px #0b0c0c;
+  text-decoration: none;
+}
+
+.govuk-filter-pane__toggle:active {
+  color: #0b0c0c;
+}
+
+.govuk-filter-pane__search {
+  margin-bottom: 10px; /* govuk-spacing(2) = 10px */
+}
+
+.govuk-filter-pane__search-label {
+  display: block;
+  margin-bottom: 5px; /* govuk-spacing(1) = 5px */
+  font-weight: 700;
+  font-size: 1rem;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane__search-label {
+    font-size: 1.1875rem;
+  }
+}
+
+.govuk-filter-pane__options {
+  margin-top: 0;
+}
+
+/* Compact checkbox styling for filter pane */
+.govuk-filter-pane__options .govuk-checkboxes__item {
+  margin-bottom: 10px; /* govuk-spacing(2) = 10px */
+}
+
+.govuk-filter-pane__options .govuk-checkboxes__input {
+  width: 32px;
+  height: 32px;
+}
+
+.govuk-filter-pane__options .govuk-checkboxes__label {
+  max-width: calc(100% - 62px);
+  padding: 4px 15px;
+  font-size: 1rem;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane__options .govuk-checkboxes__label {
+    font-size: 1.1875rem;
+  }
+}
+
+.govuk-filter-pane__options .govuk-checkboxes__label::before {
+  top: 4px;
+  left: 4px;
+  width: 24px;
+  height: 24px;
+}
+
+.govuk-filter-pane__options .govuk-checkboxes__label::after {
+  top: 11px;
+  left: 9px;
+  width: 12px;
+  height: 6px;
+  border-width: 0 0 3px 3px;
+}
+
+.govuk-filter-pane__count {
+  margin-left: 5px; /* govuk-spacing(1) = 5px */
+  color: #505a5f;
+  font-size: 1rem;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-filter-pane__count {
+    font-size: 1.1875rem;
+  }
+}
+
+.govuk-filter-pane__no-results {
+  color: #505a5f;
+  font-style: italic;
+  padding: 10px 0; /* govuk-spacing(2) = 10px */
+}
+
+.govuk-filter-pane__actions {
+  margin-top: 20px;  /* govuk-spacing(4) = 20px */
+  padding-top: 15px; /* govuk-spacing(3) = 15px */
+  border-top: 1px solid #cecece; /* govuk-functional-colour(border) */
+  display: flex;
+  gap: 10px; /* govuk-spacing(2) = 10px */
+  flex-wrap: wrap;
+}

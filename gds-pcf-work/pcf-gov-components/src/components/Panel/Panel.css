@@ -1,0 +1,104 @@
+/* Panel component styles - Based on GOV.UK Frontend v6.1.0 */
+
+.govuk-panel {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* govuk-font($size: 36) — mobile */
+  font-size: 1.5rem;     /* 24px */
+  line-height: 1.04167;
+  font-weight: 400;
+
+  box-sizing: border-box;
+
+  margin-bottom: 15px; /* govuk-spacing(3) */
+
+  /* govuk-spacing(7) - $govuk-border-width = 40 - 5 = 35px */
+  padding: 35px;
+
+  /* $govuk-border-width solid transparent */
+  border: 5px solid transparent;
+
+  text-align: center;
+}
+
+/* govuk-font($size: 36) — tablet+ */
+@media (min-width: 40.0625em) {
+  .govuk-panel {
+    font-size: 2.25rem; /* 36px */
+    line-height: 1.11111;
+  }
+}
+
+/* Mobile: smaller padding + word-wrap fallback */
+@media (max-width: 40.0525em) {
+  .govuk-panel {
+    /* govuk-spacing(4) - $govuk-border-width = 20 - 5 = 15px */
+    padding: 15px;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+  }
+}
+
+@media print {
+  .govuk-panel {
+    font-family: sans-serif;
+    font-size: 28pt;
+    line-height: 1.15;
+  }
+}
+
+/* ── Confirmation variant (green background, white text) ── */
+
+.govuk-panel--confirmation {
+  color: #ffffff;            /* govuk-colour("white") */
+  background: #0f7a52;      /* govuk-colour("green") — v6.1.0 brand */
+}
+
+@media print {
+  .govuk-panel--confirmation {
+    border-color: currentcolor;
+    color: #0b0c0c;          /* govuk-functional-colour(text) */
+    background: none;
+  }
+}
+
+/* ── Panel title ── */
+
+.govuk-panel__title {
+  /* govuk-font-size($size: 48) — mobile */
+  font-size: 2rem;         /* 32px */
+  line-height: 1.09375;
+
+  font-weight: 700; /* govuk-typography-weight-bold */
+
+  margin-top: 0;
+  margin-bottom: 30px; /* govuk-spacing(6) */
+}
+
+/* govuk-font-size($size: 48) — tablet+ */
+@media (min-width: 40.0625em) {
+  .govuk-panel__title {
+    font-size: 3rem; /* 48px */
+    line-height: 1.04167;
+  }
+}
+
+@media print {
+  .govuk-panel__title {
+    font-size: 32pt;
+  }
+}
+
+/* When title is the only child, no bottom margin needed */
+.govuk-panel__title:last-child {
+  margin-bottom: 0;
+}
+
+/* ── Panel body (reference number etc.) ── */
+
+.govuk-panel__body {
+  /* Inherits font-size 36 from .govuk-panel */
+  font-weight: 400;
+}

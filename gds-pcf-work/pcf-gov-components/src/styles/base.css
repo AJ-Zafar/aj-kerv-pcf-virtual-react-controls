@@ -1,0 +1,36 @@
+/* Base styles for pcf-gov-components */
+/* Import this in your PCF control to include GOV.UK base styling */
+
+/* Reset and base styles will go here */
+/* Keep this minimal - only include what's necessary for all components */
+
+.govuk-frontend-supported * {
+  box-sizing: border-box;
+}
+
+.govuk-frontend-supported *::before,
+.govuk-frontend-supported *::after {
+  box-sizing: border-box;
+}
+
+/* Visually hidden utility - hides content visually but keeps it available to screen readers */
+.govuk-visually-hidden {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0 0 0 0) !important;
+  clip-path: inset(50%) !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.govuk-visually-hidden::before,
+.govuk-visually-hidden::after {
+  content: " ";
+}

@@ -1,0 +1,35 @@
+/* Form group component styles - Based on GOV.UK Frontend v6.1.0 */
+
+.govuk-form-group {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 40.0625em) {
+  .govuk-form-group {
+    margin-bottom: 30px;
+  }
+}
+
+/* Remove margin from last item in nested groups */
+.govuk-form-group .govuk-form-group:last-of-type {
+  margin-bottom: 0;
+}
+
+/* Error state */
+.govuk-form-group--error {
+  padding-left: 15px;
+  border-left: 5px solid #ca3535;
+}
+
+/* Reset error styles in nested form groups */
+.govuk-form-group--error .govuk-form-group {
+  padding: 0;
+  border: 0;
+}
+
+/* Clearfix for form groups */
+.govuk-form-group::after {
+  content: "";
+  display: block;
+  clear: both;
+}
