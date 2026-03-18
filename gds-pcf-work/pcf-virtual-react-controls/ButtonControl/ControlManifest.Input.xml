@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest>
+  <control namespace="Kerv.GDS" constructor="ButtonControl" version="0.0.1"
+    display-name-key="ButtonControl_Display_Key"
+    description-key="ButtonControl_Desc_Key"
+    control-type="virtual">
+    <external-service-usage enabled="false" />
+
+    <!-- Primary bound property: the button label text -->
+    <property name="text"
+      display-name-key="text_Display_Key"
+      description-key="text_Desc_Key"
+      of-type="SingleLine.Text"
+      usage="bound"
+      required="true" />
+
+    <!-- Optional link URL – renders as <a> when provided -->
+    <property name="href"
+      display-name-key="href_Display_Key"
+      description-key="href_Desc_Key"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false" />
+
+    <!-- Disables the button -->
+    <property name="disabled"
+      display-name-key="disabled_Display_Key"
+      description-key="disabled_Desc_Key"
+      of-type="TwoOptions"
+      usage="input"
+      required="false" />
+
+    <!-- GOV.UK start button style -->
+    <property name="isStartButton"
+      display-name-key="isStartButton_Display_Key"
+      description-key="isStartButton_Desc_Key"
+      of-type="TwoOptions"
+      usage="input"
+      required="false" />
+
+    <!-- GOV.UK prevent double-click behaviour -->
+    <property name="preventDoubleClick"
+      display-name-key="preventDoubleClick_Display_Key"
+      description-key="preventDoubleClick_Desc_Key"
+      of-type="TwoOptions"
+      usage="input"
+      required="false" />
+
+    <!-- HTML name attribute for form submission -->
+    <property name="name"
+      display-name-key="name_Display_Key"
+      description-key="name_Desc_Key"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false" />
+
+    <!-- HTML value attribute for form submission -->
+    <property name="value"
+      display-name-key="value_Display_Key"
+      description-key="value_Desc_Key"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false" />
+
+    <!-- Additional CSS class names -->
+    <property name="className"
+      display-name-key="className_Display_Key"
+      description-key="className_Desc_Key"
+      of-type="SingleLine.Text"
+      usage="input"
+      required="false" />
+
+    <resources>
+      <code path="index.ts" order="1" />
+      <css path="css/govuk-button.css" order="1" />
+      <resx path="strings/ButtonControl.1033.resx" version="1.0.0" />
+      <platform-library name="React" version="16.14.0" />
+    </resources>
+  </control>
+</manifest>

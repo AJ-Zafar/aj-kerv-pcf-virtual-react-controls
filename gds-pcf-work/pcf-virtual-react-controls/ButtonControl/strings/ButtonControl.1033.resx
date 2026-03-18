@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+
+  <!-- Control display name and description -->
+  <data name="ButtonControl_Display_Key" xml:space="preserve">
+    <value>GOV.UK Button</value>
+  </data>
+  <data name="ButtonControl_Desc_Key" xml:space="preserve">
+    <value>GOV.UK Design System Button component. Use to help users carry out an action such as starting an application or saving their information.</value>
+  </data>
+
+  <!-- text -->
+  <data name="text_Display_Key" xml:space="preserve">
+    <value>Button Text</value>
+  </data>
+  <data name="text_Desc_Key" xml:space="preserve">
+    <value>The visible text label displayed on the button. Bind to a text field whose value will be shown as the button label.</value>
+  </data>
+
+  <!-- href -->
+  <data name="href_Display_Key" xml:space="preserve">
+    <value>Link URL (href)</value>
+  </data>
+  <data name="href_Desc_Key" xml:space="preserve">
+    <value>Optional. When provided, renders the button as an anchor element with button styling that navigates to this URL. Leave blank for a standard button element.</value>
+  </data>
+
+  <!-- disabled -->
+  <data name="disabled_Display_Key" xml:space="preserve">
+    <value>Disabled</value>
+  </data>
+  <data name="disabled_Desc_Key" xml:space="preserve">
+    <value>When set to Yes, renders the button in a disabled state. The button will appear faded and cannot be clicked.</value>
+  </data>
+
+  <!-- isStartButton -->
+  <data name="isStartButton_Display_Key" xml:space="preserve">
+    <value>Start Button</value>
+  </data>
+  <data name="isStartButton_Desc_Key" xml:space="preserve">
+    <value>When set to Yes, renders as the GOV.UK start button with bold larger text and a right-arrow icon. Use as the main call-to-action on a service start page.</value>
+  </data>
+
+  <!-- preventDoubleClick -->
+  <data name="preventDoubleClick_Display_Key" xml:space="preserve">
+    <value>Prevent Double Click</value>
+  </data>
+  <data name="preventDoubleClick_Desc_Key" xml:space="preserve">
+    <value>When set to Yes, temporarily disables the button for one second after the first click to prevent duplicate form submissions.</value>
+  </data>
+
+  <!-- name -->
+  <data name="name_Display_Key" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="name_Desc_Key" xml:space="preserve">
+    <value>Optional HTML name attribute. Used to identify this button during form submission, for example when multiple buttons are present.</value>
+  </data>
+
+  <!-- value -->
+  <data name="value_Display_Key" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="value_Desc_Key" xml:space="preserve">
+    <value>Optional HTML value attribute submitted with the form when this button is clicked. Useful when multiple submit buttons are present in the same form.</value>
+  </data>
+
+  <!-- className -->
+  <data name="className_Display_Key" xml:space="preserve">
+    <value>Custom CSS Class</value>
+  </data>
+  <data name="className_Desc_Key" xml:space="preserve">
+    <value>Optional. One or more additional CSS class names to apply to the button element (space-separated). For example: govuk-button--secondary or govuk-button--warning.</value>
+  </data>
+</root>
