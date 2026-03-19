@@ -12,11 +12,7 @@
     "start:watch": "pcf-scripts start watch",
     "refreshTypes": "pcf-scripts refreshTypes"
   },
-  "dependencies": {
-    "react": "16.14.0",
-    "@fluentui/react-components": "9.68.0",
-    "react-dom": "16.14.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@eslint/js": "^9.25.1",
     "@microsoft/eslint-plugin-power-apps": "^0.2.51",
@@ -28,7 +24,8 @@
     "globals": "^15.15.0",
     "pcf-scripts": "^1",
     "pcf-start": "^1",
-    "react": "^16.14.0",
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
     "typescript": "^5.8.3",
     "typescript-eslint": "8.44.0"
   }

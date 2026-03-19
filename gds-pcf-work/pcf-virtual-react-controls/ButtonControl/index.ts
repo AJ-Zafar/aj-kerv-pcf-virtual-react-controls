@@ -18,7 +18,7 @@ function GovukButton(props: GovukButtonProps): React.ReactElement {
     const classes = [
         "govuk-button",
         props.isStartButton ? "govuk-button--start" : null,
-        props.className || null,
+        props.className ?? null,
     ]
         .filter(Boolean)
         .join(" ");
