@@ -61,7 +61,6 @@ export function getJourneySteps(
 
   const isAttending =
     formData.attendanceStatus === 'attending' ||
-    formData.attendanceStatus === 'maybe' ||
     formData.attendanceStatus === 'waitlisted' ||
     formData.attendanceStatus === 'pendingApproval';
 

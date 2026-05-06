@@ -3,7 +3,7 @@
 import React, { useEffect, useMemo } from 'react';
 import { useRouter } from 'next/navigation';
 import { RsvpProvider } from '@/context/RsvpContext';
-import { GovPageLayout } from '@/components/gov';
+import { GovPageLayout } from '@/components/gov/GovPageLayout';
 import { ScenarioData } from '@/types/dataverse';
 
 interface Props {

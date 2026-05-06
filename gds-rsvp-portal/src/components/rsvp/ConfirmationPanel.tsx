@@ -2,8 +2,66 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import { GovPanel, GovSummaryList, GovInsetText, GovButton } from '@/components/gov';
-import Link from 'next/link';
+import { GovPanel } from '@/components/gov/GovPanel';
+import { GovSummaryList } from '@/components/gov/GovSummaryList';
+import { GovInsetText } from '@/components/gov/GovInsetText';
+import { GovButton } from '@/components/gov/GovButton';
+
+/**
+ * Placeholder QR code rendered as an SVG grid pattern.
+ * Replace with a real QR library (e.g. qrcode.react) when ready.
+ */
+const PlaceholderQrCode = React.memo(function PlaceholderQrCode({ value }: { value: string }) {
+  // Generate a deterministic pixel pattern from the value string
+  const size = 120;
+  const gridSize = 11;
+  const cellSize = size / gridSize;
+  const cells: { x: number; y: number }[] = [];
+
+  let hash = 0;
+  for (let i = 0; i < value.length; i++) {
+    hash = ((hash << 5) - hash + value.charCodeAt(i)) | 0;
+  }
+
+  for (let row = 0; row < gridSize; row++) {
+    for (let col = 0; col < gridSize; col++) {
+      // Fixed corner markers (QR finder patterns)
+      const isCorner =
+        (row < 3 && col < 3) ||
+        (row < 3 && col >= gridSize - 3) ||
+        (row >= gridSize - 3 && col < 3);
+      // Deterministic fill for inner cells
+      const idx = row * gridSize + col;
+      const fill = isCorner || ((hash * (idx + 1) * 7) % 3 !== 0);
+      if (fill) {
+        cells.push({ x: col * cellSize, y: row * cellSize });
+      }
+    }
+  }
+
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox={`0 0 ${size} ${size}`}
+      role="img"
+      aria-label={`QR code: ${value}`}
+      style={{ border: '2px solid #0b0c0c', display: 'block', marginTop: '10px' }}
+    >
+      <rect width={size} height={size} fill="white" />
+      {cells.map((c, i) => (
+        <rect
+          key={i}
+          x={c.x}
+          y={c.y}
+          width={cellSize}
+          height={cellSize}
+          fill="#0b0c0c"
+        />
+      ))}
+    </svg>
+  );
+});
 
 function formatDateTime(iso: string): string {
   const d = new Date(iso);
@@ -60,46 +118,73 @@ export function ConfirmationPanel({ baseUrl }: Props) {
       {!isDeclined && (
         <>
           <h2 className="govuk-heading-m">Attendees</h2>
-          {allAttendees.map((a, i) => (
-            <div key={a.attendeeId} style={{ marginBottom: '20px' }}>
-              <p className="govuk-body">
-                <strong>
-                  {a.firstName} {a.lastName}
-                </strong>
-                {a.attendeeType === 'primary' ? ' (you)' : ` (guest ${i})`}
-              </p>
-              {event.qrCodeEnabled && (
-                <GovInsetText>
-                  {/* Future: Replace with <QRCode value={a.qrCodeValue} /> from qrcode.react */}
-                  <span aria-label={`QR code for ${a.firstName} ${a.lastName}`}>
-                    [QR Code: {a.attendeeType === 'primary'
-                      ? scenario.attendees.find((sa) => sa.attendeeType === 'primary')?.qrCodeValue
-                      : `qr-${a.attendeeId}`}]
-                  </span>
-                </GovInsetText>
-              )}
-            </div>
-          ))}
+          {allAttendees.map((a, i) => {
+            const qrValue = a.attendeeType === 'primary'
+              ? scenario.attendees.find((sa) => sa.attendeeType === 'primary')?.qrCodeValue || a.attendeeId
+              : `qr-${a.attendeeId}`;
+            return (
+              <div key={a.attendeeId} className="govuk-!-margin-bottom-4">
+                <p className="govuk-body">
+                  <strong>
+                    {a.firstName} {a.lastName}
+                  </strong>
+                  {a.attendeeType === 'primary' ? ' (you)' : ` (guest ${i})`}
+                </p>
+                {event.qrCodeEnabled && (
+                  <div aria-label={`QR code for ${a.firstName} ${a.lastName}`}>
+                    <PlaceholderQrCode value={qrValue} />
+                  </div>
+                )}
+              </div>
+            );
+          })}
+
+          {formData.guests.length > 0 && event.qrCodeEnabled && (
+            <GovInsetText>
+              All QR codes, including those for your guests, will be sent to your
+              email address (<strong>{formData.primaryAttendee.email}</strong>).
+              Please share each guest&apos;s QR code with them before the event.
+            </GovInsetText>
+          )}
         </>
       )}
 
       <h2 className="govuk-heading-m">What happens next</h2>
       <p className="govuk-body">
         You will receive a confirmation email with all the details.
+        {formData.guests.length > 0 && ' This will include QR codes for all attendees.'}
       </p>
 
       {/* Future: Generate .ics calendar file */}
-      <GovButton type="button" variant="secondary" onClick={() => alert('Add to calendar — not yet implemented')}>
+      <GovButton type="button" variant="secondary" onClick={() => alert('Add to calendar - not yet implemented')}>
         Add to calendar
       </GovButton>
 
-      {event.editRsvpAllowed && (
-        <p className="govuk-body" style={{ marginTop: '20px' }}>
-          <Link className="govuk-link" href={`${baseUrl}/attendance/`}>
-            Edit your response
-          </Link>
-        </p>
-      )}
+      <p className="govuk-body govuk-!-margin-top-4">
+        <a
+          href="#"
+          className="govuk-link"
+          onClick={(e) => { e.preventDefault(); window.print(); }}
+        >
+          Print this page
+        </a>
+      </p>
+
+      <hr className="govuk-section-break govuk-section-break--l govuk-section-break--visible" />
+
+      <h2 className="govuk-heading-m">Contact</h2>
+      <p className="govuk-body">
+        If you have any questions about this event, contact the organiser
+        at <strong>{event.organiserName}</strong>.
+      </p>
+
+      <h2 className="govuk-heading-m">Give feedback</h2>
+      <p className="govuk-body">
+        <a className="govuk-link" href="#">
+          What did you think of this service?
+        </a>{' '}
+        (takes 30 seconds)
+      </p>
     </div>
   );
 }

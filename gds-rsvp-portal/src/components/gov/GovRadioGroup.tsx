@@ -24,7 +24,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export function GovRadioGroup({
+export const GovRadioGroup = React.memo(function GovRadioGroup({
   id,
   name,
   legend,
@@ -104,4 +104,4 @@ export function GovRadioGroup({
       </GovFieldset>
     </GovFormGroup>
   );
-}
+});

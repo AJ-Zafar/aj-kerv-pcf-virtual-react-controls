@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import { GovSummaryList, GovButton } from '@/components/gov';
+import { GovSummaryList } from '@/components/gov/GovSummaryList';
+import { GovButton } from '@/components/gov/GovButton';
 import { STEP_LABELS } from '@/lib/businessRules';
 import { StepSlug } from '@/types/dataverse';
 
@@ -22,7 +23,6 @@ export function ReviewSection({ baseUrl, onSubmit }: Props) {
   const statusLabel: Record<string, string> = {
     attending: 'Yes, attending',
     declined: 'Not attending',
-    maybe: 'Maybe',
     waitlisted: 'Waitlisted',
     pendingApproval: 'Attending (pending approval)',
   };

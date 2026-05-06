@@ -2,15 +2,13 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import {
-  GovInput,
-  GovTextarea,
-  GovRadioGroup,
-  GovSelect,
-  GovCheckboxGroup,
-  GovButton,
-  GovErrorSummary,
-} from '@/components/gov';
+import { GovInput } from '@/components/gov/GovInput';
+import { GovTextarea } from '@/components/gov/GovTextarea';
+import { GovRadioGroup } from '@/components/gov/GovRadioGroup';
+import { GovSelect } from '@/components/gov/GovSelect';
+import { GovCheckboxGroup } from '@/components/gov/GovCheckboxGroup';
+import { GovButton } from '@/components/gov/GovButton';
+import { GovErrorSummary } from '@/components/gov/GovErrorSummary';
 import { EventQuestion, AttendeeFormData } from '@/types/dataverse';
 
 interface Props {
@@ -79,7 +77,7 @@ export function CustomQuestionsSection({ onContinue }: Props) {
           }
 
           return (
-            <div key={attendee.attendeeId} style={{ marginBottom: '30px' }}>
+            <div key={attendee.attendeeId} className="govuk-!-margin-bottom-6">
               <h2 className="govuk-heading-m">
                 {attendee.attendeeType === 'primary'
                   ? `${attendee.firstName || 'You'} (primary attendee)`

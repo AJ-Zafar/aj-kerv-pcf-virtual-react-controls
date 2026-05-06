@@ -10,7 +10,6 @@ export type AttendanceStatus =
   | 'notStarted'
   | 'attending'
   | 'declined'
-  | 'maybe'
   | 'waitlisted'
   | 'pendingApproval';
 

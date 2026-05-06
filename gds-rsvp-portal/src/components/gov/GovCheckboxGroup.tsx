@@ -22,7 +22,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export function GovCheckboxGroup({
+export const GovCheckboxGroup = React.memo(function GovCheckboxGroup({
   id,
   name,
   legend,
@@ -62,6 +62,7 @@ export function GovCheckboxGroup({
         <div className="govuk-checkboxes" data-module="govuk-checkboxes">
           {options.map((opt) => {
             const cbId = `${id}-${opt.value}`;
+            const cbHintId = opt.hint ? `${cbId}-hint` : undefined;
             return (
               <div key={opt.value} className="govuk-checkboxes__item">
                 <input
@@ -73,6 +74,7 @@ export function GovCheckboxGroup({
                   checked={values.includes(opt.value)}
                   onChange={() => toggle(opt.value)}
                   disabled={disabled}
+                  aria-describedby={cbHintId}
                 />
                 <label
                   className="govuk-label govuk-checkboxes__label"
@@ -81,7 +83,7 @@ export function GovCheckboxGroup({
                   {opt.label}
                 </label>
                 {opt.hint && (
-                  <div className="govuk-hint govuk-checkboxes__hint">
+                  <div id={cbHintId} className="govuk-hint govuk-checkboxes__hint">
                     {opt.hint}
                   </div>
                 )}
@@ -92,4 +94,4 @@ export function GovCheckboxGroup({
       </GovFieldset>
     </GovFormGroup>
   );
-}
+});

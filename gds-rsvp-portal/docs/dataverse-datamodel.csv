@@ -1,0 +1,95 @@
+Table Schema Name,Table Display Name,Column Schema Name,Column Display Name,Data Type,Format,Max Length,Required,Description,Choice/OptionSet Values,Lookup Target Table,Default Value,Notes
+fcdo_event,Event,fcdo_eventid,Event,Uniqueidentifier,,,,Primary key (auto-generated),,,,"Dataverse standard PK"
+fcdo_event,Event,fcdo_name,Name,String,Text,200,Yes,Name of the event,,,,
+fcdo_event,Event,fcdo_description,Description,String,Text Area,10000,No,Full description of the event (supports multi-line),,,,
+fcdo_event,Event,fcdo_startdatetime,Start Date Time,DateTime,DateAndTime,,Yes,Event start date and time (UTC),,,,
+fcdo_event,Event,fcdo_enddatetime,End Date Time,DateTime,DateAndTime,,Yes,Event end date and time (UTC),,,,
+fcdo_event,Event,fcdo_locationtype,Location Type,Choice,,,Yes,Whether the event is physical / virtual / hybrid,"Physical=872530000, Virtual=872530001, Hybrid=872530002",,Physical,Global OptionSet: fcdo_locationtype
+fcdo_event,Event,fcdo_locationname,Location Name,String,Text,300,No,Venue or location name,,,,
+fcdo_event,Event,fcdo_locationaddress,Location Address,String,Text Area,1000,No,Full postal address of physical venue,,,,
+fcdo_event,Event,fcdo_virtualjoinurl,Virtual Join URL,String,Url,500,No,URL for virtual/hybrid meeting link,,,,
+fcdo_event,Event,fcdo_organisername,Organiser Name,String,Text,200,Yes,Name of the event organiser or team,,,,
+fcdo_event,Event,fcdo_rsvpdeadline,RSVP Deadline,DateTime,DateAndTime,,No,Deadline after which RSVPs are no longer accepted,,,,
+fcdo_event,Event,fcdo_eventstatus,Event Status,Choice,,,Yes,Current status of the event,"Draft=872530000, Open=872530001, Closed=872530002, Full=872530003, Cancelled=872530004",,Draft,Global OptionSet: fcdo_eventstatus
+fcdo_event,Event,fcdo_capacity,Capacity,WholeNumber,None,,No,Maximum number of attendees allowed,,,,
+fcdo_event,Event,fcdo_waitlistenabled,Waitlist Enabled,Boolean,,,No,Whether a waitlist is enabled when capacity is reached,,,,No,
+fcdo_event,Event,fcdo_qrcodeenabled,QR Code Enabled,Boolean,,,No,Whether QR codes are generated for check-in,,,,No,
+fcdo_event,Event,fcdo_editrsvpallowed,Edit RSVP Allowed,Boolean,,,No,Whether respondents can edit their RSVP after submitting,,,,Yes,
+fcdo_event,Event,fcdo_dietaryrequirementsenabled,Dietary Requirements Enabled,Boolean,,,No,Whether the dietary requirements step is shown,,,,No,
+fcdo_event,Event,fcdo_accessibilityrequirementsenabled,Accessibility Requirements Enabled,Boolean,,,No,Whether the accessibility requirements step is shown,,,,No,
+fcdo_event,Event,fcdo_approvalrequired,Approval Required,Boolean,,,No,Whether RSVPs require manual approval before confirmation,,,,No,
+fcdo_event,Event,statecode,Status,State,,,Yes,Standard Dataverse record status,Active=0; Inactive=1,,,System column
+fcdo_event,Event,statuscode,Status Reason,Status,,,Yes,Standard Dataverse record status reason,Active=1; Inactive=2,,,System column
+fcdo_event,Event,createdon,Created On,DateTime,DateAndTime,,No,Record creation timestamp,,,,System column
+fcdo_event,Event,modifiedon,Modified On,DateTime,DateAndTime,,No,Record last modified timestamp,,,,System column
+fcdo_event,Event,createdby,Created By,Lookup,,,No,User who created the record,,systemuser,,System column
+fcdo_event,Event,modifiedby,Modified By,Lookup,,,No,User who last modified the record,,systemuser,,System column
+fcdo_invitation,Invitation,fcdo_invitationid,Invitation,Uniqueidentifier,,,,Primary key (auto-generated),,,,"Dataverse standard PK"
+fcdo_invitation,Invitation,fcdo_name,Name,String,Text,200,No,Auto-numbered or derived display name (e.g. INV-00001),,,,Use auto-number if available
+fcdo_invitation,Invitation,fcdo_eventid,Event,Lookup,,,Yes,The event this invitation belongs to,,fcdo_event,,N:1 relationship
+fcdo_invitation,Invitation,fcdo_contactid,Contact,Lookup,,,Yes,The Dataverse contact record being invited,,contact,,N:1 relationship to OOB Contact table
+fcdo_invitation,Invitation,fcdo_invitetoken,Invite Token,String,Text,100,Yes,Unique token used in the RSVP URL for secure access,,,,Indexed; unique constraint recommended
+fcdo_invitation,Invitation,fcdo_invitestatus,Invite Status,Choice,,,Yes,Current status of this invitation,"Sent=872530000, Opened=872530001, Responded=872530002, Expired=872530003",,Sent,Global OptionSet: fcdo_invitestatus
+fcdo_invitation,Invitation,fcdo_maxguestsallowed,Max Guests Allowed,WholeNumber,None,,No,Maximum number of additional guests this invitee can bring,,,0,
+fcdo_invitation,Invitation,fcdo_guestemailrequired,Guest Email Required,Boolean,,,No,Whether guest email addresses are mandatory,,,,No,
+fcdo_invitation,Invitation,fcdo_namedinviteonly,Named Invite Only,Boolean,,,No,Whether only the named invitee can attend (no guests),,,,No,
+fcdo_invitation,Invitation,fcdo_allowinviteetoeditcontactdetails,Allow Invitee to Edit Contact Details,Boolean,,,No,Whether the invitee can update their name and email during RSVP,,,,Yes,
+fcdo_invitation,Invitation,fcdo_currentresponseid,Current Response,Lookup,,,No,The active/latest RSVP response for this invitation,,fcdo_rsvpresponse,,N:1 self-referencing to latest response
+fcdo_invitation,Invitation,statecode,Status,State,,,Yes,Standard Dataverse record status,Active=0; Inactive=1,,,System column
+fcdo_invitation,Invitation,statuscode,Status Reason,Status,,,Yes,Standard Dataverse record status reason,Active=1; Inactive=2,,,System column
+fcdo_invitation,Invitation,createdon,Created On,DateTime,DateAndTime,,No,Record creation timestamp,,,,System column
+fcdo_invitation,Invitation,modifiedon,Modified On,DateTime,DateAndTime,,No,Record last modified timestamp,,,,System column
+fcdo_rsvpresponse,RSVP Response,fcdo_rsvpresponseid,RSVP Response,Uniqueidentifier,,,,Primary key (auto-generated),,,,"Dataverse standard PK"
+fcdo_rsvpresponse,RSVP Response,fcdo_name,Name,String,Text,200,No,Auto-numbered or derived display name (e.g. RSP-00001),,,,Use auto-number if available
+fcdo_rsvpresponse,RSVP Response,fcdo_invitationid,Invitation,Lookup,,,Yes,The invitation this response belongs to,,fcdo_invitation,,N:1 relationship
+fcdo_rsvpresponse,RSVP Response,fcdo_attendancestatus,Attendance Status,Choice,,,Yes,The invitee's attendance decision,"Not Started=872530000, Attending=872530001, Declined=872530002, Maybe=872530003, Waitlisted=872530004, Pending Approval=872530005",,Not Started,Global OptionSet: fcdo_attendancestatus
+fcdo_rsvpresponse,RSVP Response,fcdo_submittedon,Submitted On,DateTime,DateAndTime,,No,Date and time the response was submitted,,,,Set by system on submit
+fcdo_rsvpresponse,RSVP Response,fcdo_declinedreason,Declined Reason,String,Text Area,2000,No,Free-text reason for declining the invitation,,,,Only relevant when attendancestatus = Declined
+fcdo_rsvpresponse,RSVP Response,fcdo_canedit,Can Edit,Boolean,,,No,Whether this response can still be edited,,,,Yes,Controlled by business rule or plugin
+fcdo_rsvpresponse,RSVP Response,fcdo_checkedin,Checked In,Boolean,,,No,Whether the primary respondent has been checked in at the event,,,,No,
+fcdo_rsvpresponse,RSVP Response,statecode,Status,State,,,Yes,Standard Dataverse record status,Active=0; Inactive=1,,,System column
+fcdo_rsvpresponse,RSVP Response,statuscode,Status Reason,Status,,,Yes,Standard Dataverse record status reason,Active=1; Inactive=2,,,System column
+fcdo_rsvpresponse,RSVP Response,createdon,Created On,DateTime,DateAndTime,,No,Record creation timestamp,,,,System column
+fcdo_rsvpresponse,RSVP Response,modifiedon,Modified On,DateTime,DateAndTime,,No,Record last modified timestamp,,,,System column
+fcdo_attendee,Attendee,fcdo_attendeeid,Attendee,Uniqueidentifier,,,,Primary key (auto-generated),,,,"Dataverse standard PK"
+fcdo_attendee,Attendee,fcdo_name,Name,String,Text,200,No,Full name (auto-populated from first + last),,,,Calculated or plugin-set
+fcdo_attendee,Attendee,fcdo_rsvpresponseid,RSVP Response,Lookup,,,Yes,The RSVP response this attendee belongs to,,fcdo_rsvpresponse,,N:1 relationship
+fcdo_attendee,Attendee,fcdo_attendeetype,Attendee Type,Choice,,,Yes,Whether this is the primary invitee or an additional guest,"Primary=872530000, Guest=872530001",,Primary,Global OptionSet: fcdo_attendeetype
+fcdo_attendee,Attendee,fcdo_firstname,First Name,String,Text,100,Yes,Attendee's first name,,,,
+fcdo_attendee,Attendee,fcdo_lastname,Last Name,String,Text,100,Yes,Attendee's last name,,,,
+fcdo_attendee,Attendee,fcdo_email,Email,String,Email,200,No,Attendee's email address,,,,Required if guestEmailRequired = Yes on invitation
+fcdo_attendee,Attendee,fcdo_dietaryrequirement,Dietary Requirement,Choice,,,No,Selected dietary requirement,"None=872530000, Vegetarian=872530001, Vegan=872530002, Halal=872530003, Kosher=872530004, Gluten Free=872530005, Dairy Free=872530006, Nut Allergy=872530007, Other=872530008",,,Global OptionSet: fcdo_dietaryrequirement
+fcdo_attendee,Attendee,fcdo_dietaryrequirementother,Dietary Requirement Other,String,Text Area,500,No,Free-text details if dietary requirement is 'Other',,,,
+fcdo_attendee,Attendee,fcdo_accessibilityrequirement,Accessibility Requirement,Choice,,,No,Selected accessibility requirement,"None=872530000, Wheelchair Access=872530001, Hearing Loop=872530002, Sign Language Interpreter=872530003, Large Print Materials=872530004, Step-Free Access=872530005, Other=872530006",,,Global OptionSet: fcdo_accessibilityrequirement
+fcdo_attendee,Attendee,fcdo_accessibilityrequirementother,Accessibility Requirement Other,String,Text Area,500,No,Free-text details if accessibility requirement is 'Other',,,,
+fcdo_attendee,Attendee,fcdo_qrcodevalue,QR Code Value,String,Text,500,No,Generated QR code string for check-in,,,,Auto-generated on submission
+fcdo_attendee,Attendee,fcdo_checkedin,Checked In,Boolean,,,No,Whether this attendee has been checked in at the event,,,,No,
+fcdo_attendee,Attendee,statecode,Status,State,,,Yes,Standard Dataverse record status,Active=0; Inactive=1,,,System column
+fcdo_attendee,Attendee,statuscode,Status Reason,Status,,,Yes,Standard Dataverse record status reason,Active=1; Inactive=2,,,System column
+fcdo_attendee,Attendee,createdon,Created On,DateTime,DateAndTime,,No,Record creation timestamp,,,,System column
+fcdo_attendee,Attendee,modifiedon,Modified On,DateTime,DateAndTime,,No,Record last modified timestamp,,,,System column
+fcdo_eventquestion,Event Question,fcdo_eventquestionid,Event Question,Uniqueidentifier,,,,Primary key (auto-generated),,,,"Dataverse standard PK"
+fcdo_eventquestion,Event Question,fcdo_name,Name,String,Text,200,No,Display name (can mirror question text or be auto-numbered),,,,
+fcdo_eventquestion,Event Question,fcdo_eventid,Event,Lookup,,,Yes,The event this question belongs to,,fcdo_event,,N:1 relationship
+fcdo_eventquestion,Event Question,fcdo_questiontext,Question Text,String,Text Area,1000,Yes,The question displayed to the respondent,,,,
+fcdo_eventquestion,Event Question,fcdo_helptext,Help Text,String,Text Area,500,No,Supporting hint text shown below the question,,,,GDS hint text pattern
+fcdo_eventquestion,Event Question,fcdo_questiontype,Question Type,Choice,,,Yes,The input type for this question,"Text=872530000, Text Area=872530001, Yes/No=872530002, Radio=872530003, Select=872530004, Multi Select=872530005, Checkbox=872530006",,Text,Global OptionSet: fcdo_questiontype
+fcdo_eventquestion,Event Question,fcdo_required,Required,Boolean,,,No,Whether an answer is mandatory,,,,No,
+fcdo_eventquestion,Event Question,fcdo_displayorder,Display Order,WholeNumber,None,,No,Order in which the question appears (ascending),,,1,
+fcdo_eventquestion,Event Question,fcdo_appliesto,Applies To,Choice,,,Yes,Scope of who should answer this question,"RSVP Level=872530000, Primary Attendee=872530001, All Attendees=872530002, Guests Only=872530003",,RSVP Level,Global OptionSet: fcdo_questionappliesto
+fcdo_eventquestion,Event Question,fcdo_options,Options,String,Text Area,4000,No,"JSON array of option labels for radio/select/multiSelect/checkbox, e.g. [""Option A"",""Option B""]",,,,Stored as JSON; parsed by frontend/API
+fcdo_eventquestion,Event Question,fcdo_conditionalvisibilityrule,Conditional Visibility Rule,String,Text Area,2000,No,JSON rule expression for conditional show/hide logic (future use),,,,Placeholder for future implementation
+fcdo_eventquestion,Event Question,statecode,Status,State,,,Yes,Standard Dataverse record status,Active=0; Inactive=1,,,System column
+fcdo_eventquestion,Event Question,statuscode,Status Reason,Status,,,Yes,Standard Dataverse record status reason,Active=1; Inactive=2,,,System column
+fcdo_eventquestion,Event Question,createdon,Created On,DateTime,DateAndTime,,No,Record creation timestamp,,,,System column
+fcdo_eventquestion,Event Question,modifiedon,Modified On,DateTime,DateAndTime,,No,Record last modified timestamp,,,,System column
+fcdo_questionanswer,Question Answer,fcdo_questionanswerid,Question Answer,Uniqueidentifier,,,,Primary key (auto-generated),,,,"Dataverse standard PK"
+fcdo_questionanswer,Question Answer,fcdo_name,Name,String,Text,200,No,Auto-numbered or derived display name,,,,
+fcdo_questionanswer,Question Answer,fcdo_questionid,Question,Lookup,,,Yes,The event question being answered,,fcdo_eventquestion,,N:1 relationship
+fcdo_questionanswer,Question Answer,fcdo_rsvpresponseid,RSVP Response,Lookup,,,Yes,The RSVP response this answer belongs to,,fcdo_rsvpresponse,,N:1 relationship
+fcdo_questionanswer,Question Answer,fcdo_attendeeid,Attendee,Lookup,,,No,The specific attendee this answer belongs to (null for RSVP-level answers),,fcdo_attendee,,N:1 relationship; nullable
+fcdo_questionanswer,Question Answer,fcdo_value,Value,String,Text Area,4000,Yes,"The answer value; for multi-select/checkbox stored as JSON array string e.g. [""A"",""B""]",,,,
+fcdo_questionanswer,Question Answer,statecode,Status,State,,,Yes,Standard Dataverse record status,Active=0; Inactive=1,,,System column
+fcdo_questionanswer,Question Answer,statuscode,Status Reason,Status,,,Yes,Standard Dataverse record status reason,Active=1; Inactive=2,,,System column
+fcdo_questionanswer,Question Answer,createdon,Created On,DateTime,DateAndTime,,No,Record creation timestamp,,,,System column
+fcdo_questionanswer,Question Answer,modifiedon,Modified On,DateTime,DateAndTime,,No,Record last modified timestamp,,,,System column

@@ -2,7 +2,10 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import { GovInput, GovButton, GovErrorSummary, GovInsetText } from '@/components/gov';
+import { GovInput } from '@/components/gov/GovInput';
+import { GovButton } from '@/components/gov/GovButton';
+import { GovErrorSummary } from '@/components/gov/GovErrorSummary';
+import { GovInsetText } from '@/components/gov/GovInsetText';
 
 interface Props {
   onContinue: () => void;
@@ -29,7 +32,7 @@ export function ContactDetailsSection({ onContinue }: Props) {
   };
 
   const errorItems = Object.entries(errors).map(([field, message]) => ({
-    field: field.replace('primary-', ''),
+    field,
     message,
   }));
 

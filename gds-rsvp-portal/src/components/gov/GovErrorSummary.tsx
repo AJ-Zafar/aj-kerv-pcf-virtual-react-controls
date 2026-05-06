@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef, useEffect } from 'react';
 
 interface ErrorItem {
   field: string;
@@ -14,10 +16,20 @@ export function GovErrorSummary({
   title = 'There is a problem',
   errors,
 }: Props) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  // Focus the error summary when errors appear (GDS accessibility requirement)
+  useEffect(() => {
+    if (errors.length > 0 && ref.current) {
+      ref.current.focus();
+    }
+  }, [errors]);
+
   if (errors.length === 0) return null;
 
   return (
     <div
+      ref={ref}
       className="govuk-error-summary"
       data-module="govuk-error-summary"
       role="alert"

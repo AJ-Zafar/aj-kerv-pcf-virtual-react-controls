@@ -14,7 +14,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export function GovSelect({
+export const GovSelect = React.memo(function GovSelect({
   id,
   name,
   label,
@@ -61,4 +61,4 @@ export function GovSelect({
       </select>
     </GovFormGroup>
   );
-}
+});

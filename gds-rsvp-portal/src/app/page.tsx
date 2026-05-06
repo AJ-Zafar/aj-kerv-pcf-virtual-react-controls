@@ -1,19 +1,19 @@
-import { GovPageLayout } from '@/components/gov';
+import { GovPageLayout } from '@/components/gov/GovPageLayout';
 import { getAllTokens } from '@/mock/mockData';
 import Link from 'next/link';
 
 const SCENARIO_DESCRIPTIONS: Record<string, string> = {
-  'scenario-01': 'Standard invite — no guests allowed',
+  'scenario-01': 'Standard invite - no guests allowed',
   'scenario-02': 'Invite with one plus-one',
   'scenario-03': 'Invite with up to 4 guests',
   'scenario-04': 'Dietary and accessibility requirements enabled',
   'scenario-05': 'Custom questions at RSVP level',
   'scenario-06': 'Custom questions per attendee',
-  'scenario-07': 'Already responded — can edit',
-  'scenario-08': 'Already responded — cannot edit',
+  'scenario-07': 'Already responded - can edit',
+  'scenario-08': 'Already responded - cannot edit',
   'scenario-09': 'RSVP deadline has passed',
-  'scenario-10': 'Event full — waitlist enabled',
-  'scenario-11': 'Event full — waitlist disabled',
+  'scenario-10': 'Event full - waitlist enabled',
+  'scenario-11': 'Event full - waitlist disabled',
   'scenario-12': 'Event requires approval',
   'scenario-13': 'User declines the invite',
   'scenario-15': 'Event cancelled',
@@ -24,7 +24,7 @@ export default function HomePage() {
 
   return (
     <GovPageLayout serviceName="RSVP Portal">
-      <h1 className="govuk-heading-xl">RSVP Portal — Prototype</h1>
+      <h1 className="govuk-heading-xl">RSVP Portal - Prototype</h1>
 
       <p className="govuk-body-l">
         Select a scenario below to test the RSVP journey with different

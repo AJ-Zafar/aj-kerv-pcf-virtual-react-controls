@@ -2,14 +2,12 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import {
-  GovRadioGroup,
-  GovTextarea,
-  GovErrorSummary,
-  GovButton,
-  GovInsetText,
-  GovNotificationBanner,
-} from '@/components/gov';
+import { GovRadioGroup } from '@/components/gov/GovRadioGroup';
+import { GovTextarea } from '@/components/gov/GovTextarea';
+import { GovErrorSummary } from '@/components/gov/GovErrorSummary';
+import { GovButton } from '@/components/gov/GovButton';
+import { GovInsetText } from '@/components/gov/GovInsetText';
+import { GovNotificationBanner } from '@/components/gov/GovNotificationBanner';
 import { isReadOnly } from '@/lib/businessRules';
 
 interface Props {
@@ -47,7 +45,6 @@ export function AttendanceSection({ onContinue }: Props) {
   const attendanceOptions = [
     { value: 'attending', label: isFullWaitlist ? 'Join the waitlist' : 'Yes, I will attend' },
     { value: 'declined', label: 'No, I cannot attend' },
-    { value: 'maybe', label: 'Maybe — I am not sure yet' },
   ];
 
   if (scenario.event.approvalRequired) {
@@ -91,6 +88,7 @@ export function AttendanceSection({ onContinue }: Props) {
           value={formData.declinedReason}
           onChange={setDeclinedReason}
           rows={3}
+          maxLength={500}
           disabled={readOnly}
         />
       )}

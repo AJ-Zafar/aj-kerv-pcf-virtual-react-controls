@@ -7,6 +7,8 @@ import {
 
 export type ErrorMap = Record<string, string>;
 
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export function validateAttendance(formData: RsvpFormData): ErrorMap {
   const errors: ErrorMap = {};
   if (!formData.attendanceStatus) {
@@ -34,6 +36,8 @@ export function validateGuests(
     }
     if (invitation.guestEmailRequired && !g.email.trim()) {
       errors[`guest-${i}-email`] = `Enter email address for guest ${i + 1}`;
+    } else if (invitation.guestEmailRequired && g.email.trim() && !EMAIL_REGEX.test(g.email.trim())) {
+      errors[`guest-${i}-email`] = `Enter an email address in the correct format, like name@example.com`;
     }
   });
 
@@ -113,6 +117,8 @@ export function validateContact(formData: RsvpFormData): ErrorMap {
   }
   if (!p.email.trim()) {
     errors['primary-email'] = 'Enter your email address';
+  } else if (!EMAIL_REGEX.test(p.email.trim())) {
+    errors['primary-email'] = 'Enter an email address in the correct format, like name@example.com';
   }
 
   return errors;

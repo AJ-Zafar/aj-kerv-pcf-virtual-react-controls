@@ -2,7 +2,8 @@
 
 import React from 'react';
 import { GdsEvent } from '@/types/dataverse';
-import { GovSummaryList, GovInsetText } from '@/components/gov';
+import { GovSummaryList } from '@/components/gov/GovSummaryList';
+import { GovInsetText } from '@/components/gov/GovInsetText';
 
 function formatDateTime(iso: string): string {
   const d = new Date(iso);
@@ -30,7 +31,7 @@ export function EventSummary({ event }: Props) {
 
   return (
     <div>
-      <h2 className="govuk-heading-l">{event.name}</h2>
+      <h1 className="govuk-heading-l">{event.name}</h1>
       <GovInsetText>{event.description}</GovInsetText>
       <GovSummaryList rows={rows} />
     </div>
@@ -48,7 +49,7 @@ function locationText(event: GdsEvent): React.ReactNode {
     );
   }
   if (event.locationType === 'virtual') {
-    return 'Online event — join link will be provided';
+    return 'Online event - join link will be provided';
   }
   return (
     <>

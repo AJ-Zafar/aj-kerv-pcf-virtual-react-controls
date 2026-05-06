@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useId } from 'react';
 import { classNames } from '@/utils/classNames';
 
 interface Props {
@@ -8,6 +8,9 @@ interface Props {
 }
 
 export function GovNotificationBanner({ type, title, children }: Props) {
+  const uniqueId = useId();
+  const titleId = `notification-banner-title-${uniqueId}`;
+
   return (
     <div
       className={classNames(
@@ -15,13 +18,13 @@ export function GovNotificationBanner({ type, title, children }: Props) {
         type === 'success' && 'govuk-notification-banner--success'
       )}
       role={type === 'success' ? 'alert' : 'region'}
-      aria-labelledby="notification-banner-title"
+      aria-labelledby={titleId}
       data-module="govuk-notification-banner"
     >
       <div className="govuk-notification-banner__header">
         <h2
           className="govuk-notification-banner__title"
-          id="notification-banner-title"
+          id={titleId}
         >
           {title}
         </h2>

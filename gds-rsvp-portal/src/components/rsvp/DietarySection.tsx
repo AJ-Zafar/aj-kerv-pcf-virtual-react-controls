@@ -2,12 +2,10 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import {
-  GovSelect,
-  GovInput,
-  GovButton,
-  GovErrorSummary,
-} from '@/components/gov';
+import { GovSelect } from '@/components/gov/GovSelect';
+import { GovInput } from '@/components/gov/GovInput';
+import { GovButton } from '@/components/gov/GovButton';
+import { GovErrorSummary } from '@/components/gov/GovErrorSummary';
 
 const DIETARY_OPTIONS = [
   { value: '', label: 'Select dietary requirement' },
@@ -73,7 +71,7 @@ export function DietarySection({ onContinue }: Props) {
         };
 
         return (
-          <div key={attendee.attendeeId} style={{ marginBottom: '30px' }}>
+          <div key={attendee.attendeeId} className="govuk-!-margin-bottom-6">
             <h2 className="govuk-heading-m">{label}</h2>
             <GovSelect
               id={`dietary-${i}`}

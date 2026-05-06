@@ -2,7 +2,9 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import { GovTextarea, GovButton, GovErrorSummary } from '@/components/gov';
+import { GovTextarea } from '@/components/gov/GovTextarea';
+import { GovButton } from '@/components/gov/GovButton';
+import { GovErrorSummary } from '@/components/gov/GovErrorSummary';
 
 interface Props {
   onContinue: () => void;
@@ -57,7 +59,7 @@ export function AccessibilitySection({ onContinue }: Props) {
         };
 
         return (
-          <div key={attendee.attendeeId} style={{ marginBottom: '30px' }}>
+          <div key={attendee.attendeeId} className="govuk-!-margin-bottom-6">
             <h2 className="govuk-heading-m">{label}</h2>
             <GovTextarea
               id={`accessibility-${i}`}
@@ -67,6 +69,7 @@ export function AccessibilitySection({ onContinue }: Props) {
               value={attendee.accessibilityRequirement}
               onChange={(val) => update('accessibilityRequirement', val)}
               rows={3}
+              maxLength={500}
             />
           </div>
         );

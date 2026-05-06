@@ -1,6 +1,6 @@
 'use client';
 
-import React, { createContext, useContext, useState, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useState, useCallback, useMemo, useRef } from 'react';
 import {
   ScenarioData,
   RsvpFormData,
@@ -114,8 +114,14 @@ export function RsvpProvider({
         formData,
         scenario.questions.length > 0
       ),
-    [scenario, formData]
+    // Only attendanceStatus actually affects the journey steps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [scenario, formData.attendanceStatus]
   );
+
+  // Keep a ref to formData so validateCurrentStep doesn't depend on it
+  const formDataRef = useRef(formData);
+  formDataRef.current = formData;
 
   const setAttendanceStatus = useCallback((status: AttendanceStatus | '') => {
     setFormData((prev) => ({ ...prev, attendanceStatus: status }));
@@ -176,14 +182,14 @@ export function RsvpProvider({
     (step: StepSlug): boolean => {
       const stepErrors = validateStep(
         step,
-        formData,
+        formDataRef.current,
         scenario.invitation,
         scenario.questions
       );
       setErrors(stepErrors);
       return Object.keys(stepErrors).length === 0;
     },
-    [formData, scenario]
+    [scenario]
   );
 
   const clearErrors = useCallback(() => setErrors({}), []);

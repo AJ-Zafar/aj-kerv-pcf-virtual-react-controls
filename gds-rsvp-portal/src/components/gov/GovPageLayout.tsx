@@ -5,9 +5,10 @@ interface Props {
   serviceName: string;
   serviceUrl?: string;
   children: React.ReactNode;
+  backLink?: React.ReactNode;
 }
 
-export function GovPageLayout({ serviceName, serviceUrl = '/', children }: Props) {
+export const GovPageLayout = React.memo(function GovPageLayout({ serviceName, serviceUrl = '/', children, backLink }: Props) {
   return (
     <>
       <a href="#main-content" className="govuk-skip-link" data-module="govuk-skip-link">
@@ -56,8 +57,29 @@ export function GovPageLayout({ serviceName, serviceUrl = '/', children }: Props
       </header>
 
       <div className="govuk-width-container">
-        <main className="govuk-main-wrapper" id="main-content" role="main">
-          {children}
+        <div className="govuk-phase-banner">
+          <p className="govuk-phase-banner__content">
+            <strong className="govuk-tag govuk-phase-banner__content__tag">
+              Prototype
+            </strong>
+            <span className="govuk-phase-banner__text">
+              This is a prototype. Your{' '}
+              <a className="govuk-link" href="#">
+                feedback
+              </a>{' '}
+              will help us improve it.
+            </span>
+          </p>
+        </div>
+
+        {backLink}
+
+        <main className="govuk-main-wrapper" id="main-content">
+          <div className="govuk-grid-row">
+            <div className="govuk-grid-column-two-thirds">
+              {children}
+            </div>
+          </div>
         </main>
       </div>
 
@@ -100,8 +122,33 @@ export function GovPageLayout({ serviceName, serviceUrl = '/', children }: Props
               </a>
             </div>
           </div>
+          <hr className="govuk-footer__section-break" />
+          <div className="govuk-footer__meta">
+            <ul className="govuk-footer__inline-list">
+              <li className="govuk-footer__inline-list-item">
+                <a className="govuk-footer__link" href="#">
+                  Accessibility statement
+                </a>
+              </li>
+              <li className="govuk-footer__inline-list-item">
+                <a className="govuk-footer__link" href="#">
+                  Cookies
+                </a>
+              </li>
+              <li className="govuk-footer__inline-list-item">
+                <a className="govuk-footer__link" href="#">
+                  Privacy policy
+                </a>
+              </li>
+              <li className="govuk-footer__inline-list-item">
+                <a className="govuk-footer__link" href="#">
+                  Terms and conditions
+                </a>
+              </li>
+            </ul>
+          </div>
         </div>
       </footer>
     </>
   );
-}
+});

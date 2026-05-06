@@ -26,4 +26,12 @@ function copyDir(from, to) {
 }
 
 copyDir(src, dest)
+
+// Also copy the pre-compiled CSS
+const cssSrc = path.join(__dirname, '..', 'node_modules', 'govuk-frontend', 'dist', 'govuk', 'govuk-frontend.min.css')
+const cssDest = path.join(dest, 'govuk-frontend.min.css')
+if (fs.existsSync(cssSrc)) {
+  fs.copyFileSync(cssSrc, cssDest)
+}
+
 console.log('[copy-govuk-assets] Assets copied to public/assets')

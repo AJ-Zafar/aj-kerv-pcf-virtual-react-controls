@@ -12,9 +12,10 @@ interface Props {
   error?: string;
   hint?: string;
   disabled?: boolean;
+  maxLength?: number;
 }
 
-export function GovTextarea({
+export const GovTextarea = React.memo(function GovTextarea({
   id,
   name,
   label,
@@ -24,10 +25,15 @@ export function GovTextarea({
   error,
   hint,
   disabled,
+  maxLength,
 }: Props) {
   const hintId = hint ? `${id}-hint` : undefined;
   const errorId = error ? `${id}-error` : undefined;
-  const describedBy = [hintId, errorId].filter(Boolean).join(' ') || undefined;
+  const countId = maxLength ? `${id}-info` : undefined;
+  const describedBy = [hintId, errorId, countId].filter(Boolean).join(' ') || undefined;
+
+  const remaining = maxLength ? maxLength - value.length : undefined;
+  const isOverLimit = remaining !== undefined && remaining < 0;
 
   return (
     <GovFormGroup error={!!error}>
@@ -45,7 +51,11 @@ export function GovTextarea({
         </p>
       )}
       <textarea
-        className={classNames('govuk-textarea', error && 'govuk-textarea--error')}
+        className={classNames(
+          'govuk-textarea',
+          error && 'govuk-textarea--error',
+          isOverLimit && 'govuk-textarea--error'
+        )}
         id={id}
         name={name}
         rows={rows}
@@ -54,6 +64,20 @@ export function GovTextarea({
         aria-describedby={describedBy}
         disabled={disabled}
       />
+      {maxLength && (
+        <div
+          id={countId}
+          className={classNames(
+            'govuk-hint govuk-character-count__message',
+            isOverLimit && 'govuk-error-message'
+          )}
+          aria-live="polite"
+        >
+          {isOverLimit
+            ? `You have ${Math.abs(remaining!)} characters too many`
+            : `You have ${remaining} characters remaining`}
+        </div>
+      )}
     </GovFormGroup>
   );
-}
+});

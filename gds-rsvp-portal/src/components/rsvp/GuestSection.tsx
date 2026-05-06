@@ -2,11 +2,9 @@
 
 import React from 'react';
 import { useRsvp } from '@/context/RsvpContext';
-import {
-  GovInput,
-  GovButton,
-  GovErrorSummary,
-} from '@/components/gov';
+import { GovInput } from '@/components/gov/GovInput';
+import { GovButton } from '@/components/gov/GovButton';
+import { GovErrorSummary } from '@/components/gov/GovErrorSummary';
 import { AttendeeFormData } from '@/types/dataverse';
 
 interface Props {
@@ -59,23 +57,20 @@ export function GuestSection({ onContinue }: Props) {
       {formData.guests.map((guest, i) => (
         <div
           key={guest.attendeeId}
-          className="govuk-summary-card"
-          style={{ marginBottom: '30px' }}
+          className="govuk-summary-card govuk-!-margin-bottom-6"
         >
           <div className="govuk-summary-card__title-wrapper">
             <h2 className="govuk-summary-card__title">Guest {i + 1}</h2>
             <ul className="govuk-summary-card__actions">
               <li className="govuk-summary-card__action">
-                <a
-                  href="#"
+                <button
+                  type="button"
                   className="govuk-link"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    removeGuest(i);
-                  }}
+                  style={{ background: 'none', border: 'none', padding: 0, cursor: 'pointer' }}
+                  onClick={() => removeGuest(i)}
                 >
                   Remove<span className="govuk-visually-hidden"> guest {i + 1}</span>
-                </a>
+                </button>
               </li>
             </ul>
           </div>

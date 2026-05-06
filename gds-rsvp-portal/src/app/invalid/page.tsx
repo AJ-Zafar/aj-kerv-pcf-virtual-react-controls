@@ -1,4 +1,5 @@
-import { GovPageLayout, GovInsetText } from '@/components/gov';
+import { GovPageLayout } from '@/components/gov/GovPageLayout';
+import { GovInsetText } from '@/components/gov/GovInsetText';
 import Link from 'next/link';
 
 export default function InvalidPage() {
@@ -15,7 +16,7 @@ export default function InvalidPage() {
       <ul className="govuk-list govuk-list--bullet">
         <li>The link may have expired</li>
         <li>The invitation may have been withdrawn</li>
-        <li>The link may be incomplete — check it was copied correctly</li>
+        <li>The link may be incomplete - check it was copied correctly</li>
       </ul>
       <p className="govuk-body">
         <Link href="/" className="govuk-link">

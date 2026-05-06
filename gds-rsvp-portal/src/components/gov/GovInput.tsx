@@ -16,7 +16,7 @@ interface Props {
   disabled?: boolean;
 }
 
-export function GovInput({
+export const GovInput = React.memo(function GovInput({
   id,
   name,
   label,
@@ -65,4 +65,4 @@ export function GovInput({
       />
     </GovFormGroup>
   );
-}
+});
