@@ -1,0 +1,10 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "dotnet-isolated",
+    "DataverseUrl": "https://aj-kerv.crm11.dynamics.com",
+    "ManagedIdentityClientId": "",
+    "AllowedOrigins": "http://localhost:5173"
+  }
+}
