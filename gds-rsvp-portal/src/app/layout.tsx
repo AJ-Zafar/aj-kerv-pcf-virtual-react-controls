@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="govuk-template">
       <head>
-        <link rel="stylesheet" href="/assets/govuk-frontend.min.css" />
+        <link rel="stylesheet" href={`${process.env.NEXT_PUBLIC_BASE_PATH || ''}/assets/govuk-frontend.min.css`} />
       </head>
       <body className="govuk-template__body">
         <script
